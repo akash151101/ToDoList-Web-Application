@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>List Version 2</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="box" id="heading">
+    <h1> <%= listHeading %> </h1>
+  </div>
+
+
+  <div class="box">
+
+    <%  listInput.forEach(function(item){  %>
+    <form action="/delete" method="post">
+      <div class="item">
+        <input type="checkbox" name="itemDelete" value="<%= item._id %>" onchange="this.form.submit()">
+        <p> <%= item.name %> </p>
+      </div>
+      <input type="hidden" name="customName" value="<%= listHeading %>"></input>
+    </form>
+    <%  }) %>
+
+  </div>
+
+
+
+
+  <form class="box" action="/" method="post">
+    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+    <button type="submit" name="listName" value="<%= listHeading %>">+</button>
+  </form>
+
+  <footer>&copy; Since 2020</footer>
+</body>
+
+</html>
